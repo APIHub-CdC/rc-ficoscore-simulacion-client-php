@@ -17,7 +17,6 @@ Desktop.ini
 !/.gitignore
 .travis.yml
 # ignore keys
-composer.lock
 
 lib/Interceptor/*.p12
 lib/Interceptor/*.pem

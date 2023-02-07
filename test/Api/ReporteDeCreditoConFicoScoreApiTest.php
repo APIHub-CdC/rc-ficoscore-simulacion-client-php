@@ -31,7 +31,6 @@ class ReporteDeCreditoConFicoScoreApiTest extends \PHPUnit_Framework_TestCase
         $this->apiInstance = new ReporteDeCreditoConFicoScoreApi($client, $config);
 
         $this->x_api_key = "your_x_api_key";
-        $this->x_full_report = 'false';
 
     }
 
@@ -59,7 +58,7 @@ class ReporteDeCreditoConFicoScoreApiTest extends \PHPUnit_Framework_TestCase
         $persona->setDomicilio($domicilio);
         
         try {
-            $result = $this->apiInstance->getReporte($this->x_api_key, $persona, $this->x_full_report);
+            $result = $this->apiInstance->getReporte($this->x_api_key, $persona);
             
             print_r($result);
             $this->assertTrue($result->getFolioConsulta()!==null);
@@ -68,125 +67,5 @@ class ReporteDeCreditoConFicoScoreApiTest extends \PHPUnit_Framework_TestCase
             echo 'Exception when calling ReporteDeCreditoConFicoScoreApiTest->getReporte: ', $e->getMessage(), PHP_EOL;
         }
     }
-
-    /**
-     * @depends testGetReporte
-     */    
-    
-    public function testGetConsultas($folioConsulta)
-    {
-        if($this->x_full_report == "false") {
-            try {
-                $result = $this->apiInstance->getConsultas($folioConsulta, $this->x_api_key);
-                print_r($result);
-                $this->assertTrue($result->getConsultas()!==null);
-            } catch (ApiException $e) {
-                echo 'Exception when calling ReporteDeCreditoConFicoScoreApiTest->testGetConsultas: ', $e->getMessage(), PHP_EOL;
-            }
-        } else {
-            print_r("x_full_report inicializado en true");
-        }
-    }
-    
-
-    /**
-     * @depends testGetReporte
-     */
-    
-    public function testGetCreditos($folioConsulta)
-    {
-        if($this->x_full_report == "false") {
-            try {
-                $result = $this->apiInstance->getCreditos($folioConsulta, $this->x_api_key);
-                print_r($result);
-                $this->assertTrue($result->getCreditos()!==null);
-            } catch (ApiException $e) {
-                echo 'Exception when calling ReporteDeCreditoConFicoScoreApiTest->testGetCreditos: ', $e->getMessage(), PHP_EOL;
-            }
-        } else {
-            print_r("x_full_report inicializado en true");
-        }        
-    }
-    
-
-    /**
-     * @depends testGetReporte
-     */
-    
-    public function testGetDomicilios($folioConsulta)
-    {
-        if($this->x_full_report == "false") {
-            try {
-                $result = $this->apiInstance->getDomicilios($folioConsulta, $this->x_api_key);
-                print_r($result);
-                $this->assertTrue($result->getDomicilios()!==null);
-            } catch (ApiException $e) {
-                echo 'Exception when calling ReporteDeCreditoConFicoScoreApiTest->testGetDomicilios: ', $e->getMessage(), PHP_EOL;
-            }
-        } else {
-            print_r("x_full_report inicializado en true");
-        }          
-    }
-    
-
-    /**
-     * @depends testGetReporte
-     */
-    
-    public function testGetEmpleos($folioConsulta)
-    {
-        if($this->x_full_report == "false") {
-            try {
-                $result = $this->apiInstance->getEmpleos($folioConsulta, $this->x_api_key);
-                print_r($result);
-                $this->assertTrue($result->getEmpleos()!==null);
-            } catch (ApiException $e) {
-                echo 'Exception when calling ReporteDeCreditoConFicoScoreApiTest->testGetEmpleos: ', $e->getMessage(), PHP_EOL;
-            }
-        } else {
-            print_r("x_full_report inicializado en true");
-        }          
-    }
-    
-
-    /**
-     * @depends testGetReporte
-     */
-    
-    public function testGetScores($folioConsulta)
-    {
-        if($this->x_full_report == "false") {
-            try {
-                $result = $this->apiInstance->getScores($folioConsulta, $this->x_api_key);
-                print_r($result);
-                $this->assertTrue($result->getScores()!==null);
-            } catch (ApiException $e) {
-                echo 'Exception when calling ReporteDeCreditoConFicoScoreApiTest->testGetScores: ', $e->getMessage(), PHP_EOL;
-            }
-        } else {
-            print_r("x_full_report inicializado en true");
-        }         
-    }
-    
-
-    /**
-     * @depends testGetReporte
-     */
-
-    public function testGetMensajes($folioConsulta)
-    {
-        if($this->x_full_report == "false") {
-            try {
-                $result = $this->apiInstance->getMensajes($folioConsulta, $this->x_api_key);
-                print_r($result);
-                $this->assertTrue($result->getMensajes()!==null);
-            } catch (ApiException $e) {
-                echo 'Exception when calling ReporteDeCreditoConFicoScoreApi->testGetMensajes: ', $e->getMessage(), PHP_EOL;
-            }
-        } else {
-            print_r("x_full_report inicializado en true");
-        }         
-    }
-
     
 }
